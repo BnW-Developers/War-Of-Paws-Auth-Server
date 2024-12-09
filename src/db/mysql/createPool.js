@@ -1,6 +1,6 @@
 import mysql from 'mysql2/promise';
-import { config } from '../config/config.js';
-import { formatDate } from './../utils/formatter/dateFormatter.js';
+import { formatDate } from './utils.js';
+import { config } from '../../config/config.js';
 
 const { database } = config;
 
@@ -29,7 +29,7 @@ const createPool = (dbConfig) => {
 };
 
 const pools = {
-  USER_DB: createPool(database.USER_DB),
+  USER_DB: createPool(database),
 };
 
 export default pools;
