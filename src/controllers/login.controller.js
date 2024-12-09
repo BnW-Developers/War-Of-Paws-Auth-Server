@@ -1,1 +1,68 @@
-export const loginController = async (req, res, next) => {};
+import { config } from '../config/config.js';
+import { findUserById } from '../db/mysql/user/user.db.js';
+import logger from '../utils/log/logger.js';
+import bcrypt from 'bcryptjs';
+import redisClient from './../db/redis/redisClient.js';
+import { createJWT } from './../utils/jwt/createToken.js';
+
+export const loginController = async (req, res, next) => {
+  try {
+    const { id } = req.body;
+    let { password } = req.body;
+    logger.info(`login request id: ${id}`);
+
+    // id가 db에 존재하는지 확인
+    const user = await findUserById(id);
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: '아이디 또는 비밀번호가 일치하지 않습니다.',
+      });
+    }
+
+    // 비밀번호 확인
+    password = password + config.auth.pepper;
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({
+        success: false,
+        message: '아이디 또는 비밀번호가 일치하지 않습니다.',
+      });
+    }
+
+    // 이미 로그인 되어있는 계정인지 확인
+    const existingSession = await redisClient.exists(`user:session:${id}`);
+    if (existingSession) {
+      return res.status(409).json({
+        success: false,
+        message: '이미 로그인 되어있는 계정입니다.',
+      });
+    }
+
+    // 레디스에 유저 세션 생성
+    const sessionKey = `user:session:${id}`;
+    const userInfo = {
+      socketId: '',
+      isLoggedIn: true,
+      isMatchmaking: false,
+      currentGameId: '',
+      currentSpecies: '',
+    };
+
+    await redisClient.hmset(sessionKey, userInfo);
+    await redisClient.expire(sessionKey, 3600);
+
+    // JWT 토큰 생성
+    const token = createJWT(id);
+    logger.info(`login success id: ${id}`);
+
+    return res.status(200).json({
+      success: true,
+      message: '로그인 성공',
+      token,
+      userId: id,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
