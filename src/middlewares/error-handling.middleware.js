@@ -4,7 +4,7 @@ export default function (err, _, res, next) {
 
   console.error(err);
   res.status(statusCode).json({
-    errorMessage: statusCode === 500 ? '서버 내부 에러가 발생했습니다.' : err.message,
-    statusCode: statusCode,
+    success: false,
+    message: statusCode === 500 ? '서버 내부 에러가 발생했습니다.' : err.message,
   });
 }

@@ -12,16 +12,18 @@ export const signupController = async (req, res, next) => {
 
     // id, email, password가 정해진 형식과 다를 경우 오류
     if (!validateSignUp(req.body)) {
-      const err = new Error('입력한 형식이 올바르지 않습니다.');
-      err.statusCode = 400;
-      throw err;
+      return res.status(400).json({
+        success: false,
+        message: '입력한 형식이 올바르지 않습니다.',
+      });
     }
 
     const user = await findUserById(id);
     if (user) {
-      const err = new Error('이미 존재하는 아이디입니다.');
-      err.statusCode = 409;
-      throw err;
+      return res.status(409).json({
+        success: false,
+        message: '이미 존재하는 아이디입니다.',
+      });
     }
 
     // 유저 DB에 저장
