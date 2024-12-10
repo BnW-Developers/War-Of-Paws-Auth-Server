@@ -5,8 +5,6 @@ import {
   DB1_PORT,
   DB1_USER,
   GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  GOOGLE_REDIRECT_URI,
   HOST,
   PEPPER,
   PORT,
@@ -43,7 +41,5 @@ export const config = {
   },
   googleApi: {
     clientId: GOOGLE_CLIENT_ID,
-    clientSecret: GOOGLE_CLIENT_SECRET,
-    redirectURI: GOOGLE_REDIRECT_URI,
   },
 };
