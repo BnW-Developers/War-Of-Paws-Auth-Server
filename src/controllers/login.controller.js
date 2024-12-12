@@ -30,9 +30,11 @@ export const loginController = async (req, res, next) => {
       });
     }
 
-    // 이미 로그인 되어있는 계정인지 확인
-    const existingSession = await redisClient.exists(`user:session:${id}`);
-    if (existingSession) {
+    // 해당 세션의 isLoggedIn 상태 확인
+    const sessionKey = `user:session:${id}`;
+    const isLoggedIn = await redisClient.hget(sessionKey, 'isLoggedIn');
+
+    if (isLoggedIn === 'true') {
       return res.status(409).json({
         success: false,
         message: '이미 로그인 되어있는 계정입니다.',
@@ -40,7 +42,6 @@ export const loginController = async (req, res, next) => {
     }
 
     // 레디스에 유저 세션 생성
-    const sessionKey = `user:session:${id}`;
     const userInfo = {
       isLoggedIn: false,
       isMatchmaking: false,
