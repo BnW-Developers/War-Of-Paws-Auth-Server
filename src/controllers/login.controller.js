@@ -42,14 +42,17 @@ export const loginController = async (req, res, next) => {
     // 레디스에 유저 세션 생성
     const sessionKey = `user:session:${id}`;
     const userInfo = {
-      socketId: '',
-      isLoggedIn: true,
+      isLoggedIn: false,
       isMatchmaking: false,
       currentGameId: '',
       currentSpecies: '',
     };
 
-    await redisClient.hmset(sessionKey, userInfo);
+    // Redis에 키가 없을 때만 추가
+    const exists = await redisClient.exists(sessionKey);
+    if (!exists) {
+      await redisClient.hset(sessionKey, userInfo);
+    }
     await redisClient.expire(sessionKey, 3600);
 
     // JWT 토큰 생성
