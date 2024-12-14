@@ -50,7 +50,7 @@ jobs:
         script: |
           # 기존 컨테이너 제거
           sudo docker stop auth-server || true
-          docker rm auth-server || true
+          sudo docker rm auth-server || true
 
           # Docker Hub에서 최신 이미지 pull
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/auth-server:${{ github.sha }}
