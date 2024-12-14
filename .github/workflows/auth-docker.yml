@@ -24,7 +24,6 @@ jobs:
     - name: Create .env file
       run: |
         echo "${{ secrets.ENV_FILE }}" | base64 -d > .dockerenv
-        cat .dockerenv # 디버깅용, 한번만 확인 후 정상 작동하면 바로 삭제해야 함
         
     # Docker Hub에 로그인
     - name: Login to Docker Hub
