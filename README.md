@@ -1,84 +1,89 @@
 # War-Of-Paws-Auth-Server
 
 ## 개요
- 요긴 멍냥대전 이미지 들어오면 좋을 듯
- ![auth](https://github.com/user-attachments/assets/c4eeffd0-a69c-4b7d-b26e-8168261abc4a)
- 
- [냥멍대전](https://github.com/BnW-Developers/War-Of-Paws-Game-Server)의 로그인 및 회원가입을 처리하는 독립적인 서버.  <br>
- 클라이언트는 이 서버를 통해 회원가입, 로그인, 구글 로그인, 토큰 발급 등의 인증 관련 기능을 수행합니다.
+![auth](https://github.com/user-attachments/assets/c4eeffd0-a69c-4b7d-b26e-8168261abc4a)
 
- 냥멍대전 🕹️게임서버: https://github.com/BnW-Developers/War-Of-Paws-Game-Server <br>
- 냥멍대전 🔑인증서버: https://github.com/BnW-Developers/War-Of-Paws-Auth-Server <br>
- 냥멍대전 🎯로비-매칭서버: https://github.com/BnW-Developers/War-Of-Paws-Lobby-Matching-Server <br>
- 냥멍대전 💊Nginx-헬퍼 서버: https://github.com/BnW-Developers/Nginx-Helper-Server <br>
- 냥멍대전 ✅헬스체크 서버: https://github.com/BnW-Developers/War-Of-Paws-Health-Server <br>
+[냥멍대전](https://github.com/BnW-Developers/War-Of-Paws-Game-Server)의 로그인 및 회원가입을 처리하는 독립적인 서버.  
+클라이언트는 이 서버를 통해 회원가입, 로그인, 구글 로그인, 토큰 발급 등의 인증 관련 기능을 수행합니다.
 
+- 🕹️ [냥멍대전 게임서버](https://github.com/BnW-Developers/War-Of-Paws-Game-Server)  
+- 🔑 [냥멍대전 인증서버](https://github.com/BnW-Developers/War-Of-Paws-Auth-Server)  
+- 🎯 [로비-매칭서버](https://github.com/BnW-Developers/War-Of-Paws-Lobby-Matching-Server)  
+- 💊 [Nginx-헬퍼 서버](https://github.com/BnW-Developers/Nginx-Helper-Server)  
+- ✅ [헬스체크 서버](https://github.com/BnW-Developers/War-Of-Paws-Health-Server)  
+
+---
 
 ## 주요 기능
- - 회원가입: 사용자 계정을 생성하고 데이터를 MySQL에 저장.
- - 로그인: 사용자 인증 및 세션 관리.
- - 구글로그인: 구글 id 토큰을 이용해 사용자 인증 및 세션 관리.
- - JWT 발급: 인증 토큰 생성
+- **회원가입**: 사용자 계정을 생성하고 데이터를 MySQL에 저장.  
+- **로그인**: 사용자 인증 및 세션 관리.  
+- **구글 로그인**: 구글 ID 토큰을 이용해 사용자 인증 및 세션 관리.  
+- **JWT 발급**: 인증 토큰 생성.  
 
- 
+---
+
 ## 주요 API
-1. **회원가입** <br>
-**POST /register** <br>
-요청 예시: 
+
+### 1. 회원가입
+**POST /register**  
+요청 예시:
 ```json
-  {
-    "username": "example",
-    "email": "example@example.com",
-    "password": "password123"
-  }
+{
+   "username": "example",
+   "email": "example@example.com",
+   "password": "password123"
+}
 ```
 응답 예시:
 ```json
- {
- 	  "success": true,
- 	  "message": "회원가입이 성공적으로 완료되었습니다."
- }
-```
-----
-2. **로그인** <br>
-**POST /login** <br>
-요청 예시: <br>
-```json
 {
-    "id": "example",
-    "password": "password1234"
+   "success": true,
+   "message": "회원가입이 성공적으로 완료되었습니다."
 }
 ```
-응답 예시: 
+---
+
+### 2. 로그인
+**POST /login**
+요청 예시:
 ```json
 {
- 	  "success": true,
-   	"message": "로그인 성공",
-   	"token": "jwt-token",
-   	"userId": "111"
+   "id": "example",
+   "password": "password1234"
 }
 ```
-----
-3. **구글 로그인** <br>
-**POST /google-login** <br>
-요청 예시: <br>
+응답 예시:
 ```json
 {
-    "idToken": "google-id-token",
-    "name": "password1234",
-    "email": "example@example.com"
+   "success": true,
+   "message": "로그인 성공",
+   "token": "jwt-token",
+   "userId": "111"
 }
 ```
-응답 예시: 
+---
+
+### 3. 구글 로그인
+**POST /google-login***
+요청 예시:
 ```json
 {
- 	  "success": true,
-   	"message": "로그인 성공",
-   	"token": "jwt-token",
-   	"userId": "111"
+   "idToken": "google-id-token",
+   "name": "password1234",
+   "email": "example@example.com"
+}
+```
+응답 예시:
+```json
+{
+   "success": true,
+   "message": "로그인 성공",
+   "token": "jwt-token",
+   "userId": "111"
 }
 ```
 
+---
 ## 기술 스택
 
 ### 기술 스택
