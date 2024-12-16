@@ -7,11 +7,11 @@
  [냥멍대전](https://github.com/BnW-Developers/War-Of-Paws-Game-Server)의 로그인 및 회원가입을 처리하는 독립적인 서버.  <br>
  클라이언트는 이 서버를 통해 회원가입, 로그인, 구글 로그인, 토큰 발급 등의 인증 관련 기능을 수행합니다.
 
- 냥멍대전 게임서버: https://github.com/BnW-Developers/War-Of-Paws-Game-Server <br>
- 냥멍대전 인증서버: https://github.com/BnW-Developers/War-Of-Paws-Auth-Server <br>
- 냥멍대전 로비-매칭서버: https://github.com/BnW-Developers/War-Of-Paws-Lobby-Matching-Server <br>
- 냥멍대전 Nginx-헬퍼 서버: https://github.com/BnW-Developers/Nginx-Helper-Server <br>
- 냥멍대전 헬스체크 서버: https://github.com/BnW-Developers/War-Of-Paws-Health-Server <br>
+ 냥멍대전 🕹️게임서버: https://github.com/BnW-Developers/War-Of-Paws-Game-Server <br>
+ 냥멍대전 🔑인증서버: https://github.com/BnW-Developers/War-Of-Paws-Auth-Server <br>
+ 냥멍대전 🎯로비-매칭서버: https://github.com/BnW-Developers/War-Of-Paws-Lobby-Matching-Server <br>
+ 냥멍대전 💊Nginx-헬퍼 서버: https://github.com/BnW-Developers/Nginx-Helper-Server <br>
+ 냥멍대전 ✅헬스체크 서버: https://github.com/BnW-Developers/War-Of-Paws-Health-Server <br>
 
 
 ## 주요 기능
