@@ -22,8 +22,8 @@
 
  
 ## 주요 API
- 1. **회원가입** <br>
-POST /register <br>
+1. **회원가입** <br>
+**POST /register** <br>
 요청 예시: 
 ```json
   {
@@ -40,8 +40,8 @@ POST /register <br>
  }
 ```
 ----
- 2. **로그인** <br>
-POST /login <br>
+2. **로그인** <br>
+**POST /login** <br>
 요청 예시: <br>
 ```json
 {
@@ -59,8 +59,8 @@ POST /login <br>
 }
 ```
 ----
- 3. **구글 로그인** <br>
-POST /login <br>
+3. **구글 로그인** <br>
+**POST /google-login** <br>
 요청 예시: <br>
 ```json
 {
