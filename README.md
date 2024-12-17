@@ -22,6 +22,17 @@
 
 ---
 
+## 코드 플로우
+### 회원가입
+![sign-up](https://github.com/user-attachments/assets/7741fb19-5ff4-455f-b6b1-5b477b069272)
+
+### 로그인
+![login](https://github.com/user-attachments/assets/ab80a3a3-5cc5-421d-b578-e11a2478afcf)
+
+### 구글 로그인
+![google-login](https://github.com/user-attachments/assets/ca9c0e23-f4ad-4c48-ac28-1c9d4299ce1e)
+
+---
 ## 주요 API
 
 ### 1. 회원가입
@@ -84,9 +95,10 @@
 ```
 
 ---
+
 ## 기술 스택
 
-### 기술 스택
+### 주요 기술
 <img src="https://shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square" style="height : 25px; margin-left : 10px; margin-right : 10px;"/>&nbsp;
 <img src="https://shields.io/badge/Node.js-339933?logo=Node.js&logoColor=fff&style=flat-square" style="height : 25px; margin-left : 10px; margin-right : 10px;"/>&nbsp;
 <img src="https://shields.io/badge/Express-000000?logo=Express&logoColor=fff&style=flat-square" style="height : 25px; margin-left : 10px; margin-right : 10px;"/>&nbsp;
